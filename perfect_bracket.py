@@ -106,7 +106,7 @@ trials_req = div(p_log_fail, p_log_inv, context=precision(prec))
 print 'Trials required for {}% chance: {}'.format(p_desired*100, float(trials_req))
 
 # Compute geometric probability of getting a perfect tournament
-trials = np.linspace(1.0, 1e17, num=1000)
+trials = np.linspace(1.0, 2e17, num=1000)
 p_geom = np.zeros(len(trials))
 for i in range(0, len(trials)):
     p_fail = sub(prec_1, p_perfect_tourn, context=precision(prec))
@@ -114,8 +114,8 @@ for i in range(0, len(trials)):
     p_succ = sub(prec_1, p_fail_trials , context=precision(prec))
     p_geom[i] = float(p_succ)
 plt.figure(3)
-fig = plt.plot(trials/1e12, p_geom*100)
-plt.xlabel('Number of Brackets (Trillions)')
+fig = plt.plot(trials/1e15, p_geom*100)
+plt.xlabel('Number of Brackets (Quadrillions)')
 plt.ylabel('Probability of a Perfect Bracket (%)')
 
 # Show figures
